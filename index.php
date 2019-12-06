@@ -61,13 +61,38 @@ if (isset($_SESSION['info'])) {
 
 <header>
     <a href="index.php?action=accueil"><h1>CATCHAT!</h1></a>
-    <a href="index.php?action=amis"><img src="../icones/icons8-personne-homme-30.png"></a>
 </header>
 <nav>
     <ul>
         <?php
         if (isset($_SESSION['id'])) {
-            echo "<li>Bonjour " . $_SESSION['login'] . " <a href='index.php?action=deconnexion'>Deconnexion</a></li>";
+            $sql = "SELECT * FROM user WHERE id = ?";
+            $query = $pdo->prepare($sql);
+            $query->execute(array($_SESSION['id']));
+            
+            $line = $query->fetch();
+            
+            echo "<li> <img src ='" . $line['avatar'] . "'> Bonjour " . $_SESSION['login'] . " <a href='index.php?action=deconnexion'>Deconnexion</a></li>
+                <form method='post' action='index.php?action=amis'>
+                    <input type='text' placeholder='Recherche' name='txtRecherche'/>
+                    <input type='submit' value='Rechercher' name='submitRecherche'/>
+                </form>";
+
+if(isset($_POST['txtRecherche'])) {
+    $recherche = $_POST['txtRecherche'];
+    $recherche = "%" . $recherche . "%";
+    
+    $sql = "SELECT * FROM user WHERE login LIKE ?";
+    $query = $pdo->prepare($sql);
+    $query->execute(array($recherche));
+
+    while($line = $query->fetch()){
+        echo "<a href='index.php?id=" . $line['id'] . "'>" . $line['login'] . "</a><br/>";
+    }
+}
+            
+            echo "<a href='index.php?action=amis'><img src='../icones/icons8-personne-homme-30.png'></a>";
+            
         } else {
             echo "<li><a href='index.php?action=login'>Login</a></li>";
             echo "<li><a href='index.php?action=creation'>Register</a></li>";
@@ -102,6 +127,6 @@ if (isset($_SESSION['info'])) {
         </div>
     </div>
 </div>
-<footer>Le pied de page</footer>
+<footer>© 2019 CatChat, Inc.</footer>
 </body>
 </html>

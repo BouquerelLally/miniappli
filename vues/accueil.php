@@ -42,7 +42,15 @@ if($ok==false) {
             <input type='hidden' name='idDemande' value='" . $id . "'>
             <input type='submit' value='Demande en ami'>";
         } else {
-            echo "Invitation envoyée.";
+            if($line['idUtilisateur2'] == $_SESSION['id']) {
+                echo "Demande reçu.<br/>";
+                echo "<form action='index.php?action=repondre' method='post';>
+                    <input type='hidden' name='idRepondre' value='" . $id . "'>
+                    <input type='submit' name='etat' value='Accepter'>
+                    <input type='submit' name='etat' value='Refuser'";
+            } else {
+                echo "Invitation envoyée.<br/>";
+            }
         }
     
 } else {

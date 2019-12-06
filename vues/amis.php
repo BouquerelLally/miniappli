@@ -1,33 +1,55 @@
-<form method="post" action="index.php?action=amis">
-    <input type="text" placeholder="Recherche" name="txtRecherche"/>
-    <input type="submit" value="Rechercher" name="submitRecherche"/>
-</form>
+<h3>Mes amis</h3>
+
+<?php 
+
+$sql = "SELECT * FROM user WHERE id IN ( SELECT user.id FROM user INNER JOIN lien ON idUtilisateur1=user.id AND etat='amis' AND idUtilisateur2=? UNION SELECT user.id FROM user INNER JOIN lien ON idUtilisateur2=user.id AND etat='amis' AND idUtilisateur1=?)";
+$query = $pdo->prepare($sql);     
+$query->execute(array($_SESSION['id'], $_SESSION['id']));
+
+echo "<ul>";
+
+while($line = $query->fetch()) {
+    echo "<li><a href='index.php?id=" . $line['id'] . "'>" . $line['login'] . "</a></li>";
+}
+
+echo "</ul>";
+
+?>
+    
+<h3> Invitations </h3>
 
 <?php
 
-if(isset($_POST['txtRecherche'])) {
-    $recherche = $_POST['txtRecherche'];
-    $recherche = "%" . $recherche . "%";
-    
-    $sql = "SELECT * FROM user WHERE login LIKE ?";
-    $query = $pdo->prepare($sql);
-    $query->execute(array($recherche));
+$sql = "SELECT user.* FROM user WHERE id IN(SELECT idUtilisateur1 FROM lien WHERE idUtilisateur2=? AND etat='attente')";
+$query = $pdo->prepare($sql);     
+$query->execute(array($_SESSION['id']));
 
-    while($line = $query->fetch()){
-        echo "<a href='index.php?id=" . $line['id'] . "'>" . $line['login'] . "</a>";
-    }
+echo "<ul>";
+
+while($line = $query->fetch()) {
+    echo "<li><a href='index.php?id=" . $line['id'] . "'>" . $line['login'] . "</a></li>";
+    echo "<a href='index.php?action=repondre&etat=amis&id=" . $line['id'] . "'> Accepter </a>";
+    echo "<a href='index.php?action=repondre&etat=refusé&id=" . $line['id'] . "'> Refuser </a>";
 }
+
+echo "</ul>";
 
 ?>
 
-<h3>Mes amis</h3>
+<h3> Demandes envoyées </h3>
 
-<!-- Liste d'amis -->
+<?php
 
-<h3> Invitations </h3>
+$sql = "SELECT user.* FROM user INNER JOIN lien ON user.id=idUtilisateur2 AND etat='attente' AND idUtilisateur1=?";
+$query = $pdo->prepare($sql);     
+$query->execute(array($_SESSION['id']));
 
-<!-- Liste des invitations -->
+echo "<ul>";
 
-<h3> En attente </h3>
+while($line = $query->fetch()) {
+    echo "<li><a href='index.php?id=" . $line['id'] . "'>" . $line['login'] . "</a></li>";
+}
 
-<!-- Liste des demandes en attente -->
+echo "</ul>";
+    
+?>
