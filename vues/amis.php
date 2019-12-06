@@ -36,9 +36,9 @@ echo "</ul>";
 
 ?>
 
-<?php
-
 <h3 id="demande_envoyees"> Demande envoyées. </h3>
+
+<?php
 
 $sql = "SELECT user.* FROM user INNER JOIN lien ON user.id=idUtilisateur2 AND etat='attente' AND idUtilisateur1=?";
 $query = $pdo->prepare($sql);     
