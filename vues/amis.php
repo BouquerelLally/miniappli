@@ -1,4 +1,4 @@
-<h3>Mes amis</h3>
+<h3 id="mes_amis">Mes amis</h3>
 
 <?php 
 
@@ -16,7 +16,7 @@ echo "</ul>";
 
 ?>
     
-<h3> Invitations </h3>
+<h3 id="invitations"> Invitations </h3>
 
 <?php
 
@@ -36,9 +36,9 @@ echo "</ul>";
 
 ?>
 
-<h3> Demandes envoyées </h3>
-
 <?php
+
+<h3 id="demande_envoyees"> Demande envoyées. </h3>
 
 $sql = "SELECT user.* FROM user INNER JOIN lien ON user.id=idUtilisateur2 AND etat='attente' AND idUtilisateur1=?";
 $query = $pdo->prepare($sql);     

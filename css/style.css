@@ -1,9 +1,118 @@
 input {
-    color: #fff;
+    color: black;
 }
 
 h1 {
+    margin-left: 5rem;
+    font-size: 7rem;
     font-family: 'Fredoka One', cursive;
-    color: #000;
+    color:white;
     text-decoration: none;
+    
+}
+
+
+
+
+
+
+/*--------------------login.php---------------*/
+#inputlogin{
+margin-left: 50%;
+}
+
+#inputmdp{
+margin-left: 50%; 
+}
+
+#checkbox{
+margin-left: 50%; 
+}
+
+#btnvalider{
+padding-left: 50%;
+}
+
+/*--------------------index.php---------------*/
+
+header{
+background-color: pink;
+}
+
+#footer{
+display: flex;
+background-color: #f6bcce;
+padding-left: 50%; 
+}
+
+#catchat{
+padding-left: 50%;
+}
+
+#login{
+padding-left: 50%;
+font-size: 2rem;
+list-style: none;
+}
+
+#register{
+padding-left: 50%;
+font-size: 2rem;
+list-style: none;
+}
+
+#logosite{
+margin-left: 5rem;
+font-size: 7rem;
+margin-top: -3rem;
+}
+
+/*--------------------creation.php---------------*/
+
+#inputemail2{
+margin-left: 50%;
+font-size: 2rem;
+}
+
+#inputlogin2{
+margin-left: 50%;
+font-size: 2rem;
+}
+
+#inputmdp2{
+margin-left: 50%;
+font-size: 2rem;
+}
+
+#inputconfirmmdp2{
+margin-left: 50%;
+font-size: 2rem;
+}
+
+#creationenvoyer{
+margin-left: 50%; 
+font-size: 2rem;
+}
+
+/*--------------------amis.php---------------*/
+
+
+#barre_recherche{
+margin-left: 50%;
+}
+
+#btn_recherche{
+margin-left: 50%;
+}
+
+#mes_amis{
+margin-left: 50%;
+}
+
+#invitations{
+margin-left: 50%;
+}
+
+#en_attente{
+margin-left: 50%;
 }

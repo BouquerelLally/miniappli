@@ -29,7 +29,9 @@ ob_start(); // Je démarre le buffer de sortie : les données à afficher sont s
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>CATCHAT!</title>
+    <title>
+    <div id="catchat">CATCHAT!</div>
+    </title>
 
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +48,7 @@ ob_start(); // Je démarre le buffer de sortie : les données à afficher sont s
     <script src="js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body> 
 
 <?php
 if (isset($_SESSION['info'])) {
@@ -61,6 +63,8 @@ if (isset($_SESSION['info'])) {
 
 <header>
     <a href="index.php?action=accueil"><h1>CATCHAT!</h1></a>
+    <a href="index.php?action=amis"><img id="logosite" src="../miniappli/icones/icone-miniFB.png"></a>
+
 </header>
 <nav>
     <ul>
@@ -94,8 +98,8 @@ if(isset($_POST['txtRecherche'])) {
             echo "<a href='index.php?action=amis'><img src='../icones/icons8-personne-homme-30.png'></a>";
             
         } else {
-            echo "<li><a href='index.php?action=login'>Login</a></li>";
-            echo "<li><a href='index.php?action=creation'>Register</a></li>";
+            echo "<li id='login'><a href='index.php?action=login'>Login</a></li>";
+            echo "<li id='register'><a href='index.php?action=creation'>Register</a></li>";
         }
         ?>
     </ul>
@@ -127,6 +131,7 @@ if(isset($_POST['txtRecherche'])) {
         </div>
     </div>
 </div>
-<footer>© 2019 CatChat, Inc.</footer>
+  
+<div id="footer">© 2019 CatChat, Inc.</footer>
 </body>
 </html>
