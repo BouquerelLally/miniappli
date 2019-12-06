@@ -13,4 +13,5 @@ $listeDesActions = array(
     "amis" => "vues/amis.php",
     "nouveau_post" => "traitement/nouveau_post.php",
     "rechercher" => "traitement/rechercher.php",
+    "repondre" => "traitement/repondre.php",
 );
