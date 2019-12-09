@@ -2,6 +2,9 @@ input {
     color: black;
 }
 
+a{
+    text-decoration: none;
+}
 h1 {
     margin-left: 5rem;
     font-size: 7rem;
@@ -11,26 +14,54 @@ h1 {
     
 }
 
+h1:hover{
+    transition-timing-function: linear;
+    background-color: black;
+    transition: .5s ease;
+    width: 340px;
+    border-radius: 15px;
+    
+}
 
-
+catchat{
+text-shadow: 2px 2px 5px red;
+}
+/*
+"catchat":hover{
+    transition-timing-function: linear;
+    background-color: black;
+    transition: .5s ease;    
+} */
 
 
 
 /*--------------------login.php---------------*/
 #inputlogin{
+margin-top: 5px;
 margin-left: 50%;
+border-radius: 5px;
+
 }
 
 #inputmdp{
-margin-left: 50%; 
+margin-top: 5px;
+margin-left: 50%;
+border-radius: 5px;
 }
 
 #checkbox{
+margin-top: 5px;
 margin-left: 50%; 
 }
 
-#btnvalider{
-padding-left: 50%;
+#btnvalid{
+margin-top: 5px;
+border-radius: 15px;
+text-decoration:none;
+}
+
+#checkbox{
+margin-right: 3px;
 }
 
 /*--------------------index.php---------------*/
@@ -75,7 +106,7 @@ font-size: 2rem;
 }
 
 #inputlogin2{
-margin-left: 50%;
+margin-left: 48%;
 font-size: 2rem;
 }
 
@@ -114,5 +145,9 @@ margin-left: 50%;
 }
 
 #en_attente{
+margin-left: 50%;
+}
+
+#demande_envoyees{
 margin-left: 50%;
 }
